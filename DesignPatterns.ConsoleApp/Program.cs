@@ -1,4 +1,5 @@
 ﻿using System;
+using DesignPatterns.Shared.Patterns.Adapter;
 using DesignPatterns.Shared.Patterns.Command;
 using DesignPatterns.Shared.Patterns.Decorator;
 using DesignPatterns.Shared.Patterns.Factory;
@@ -73,29 +74,40 @@ namespace DesignPatterns.ConsoleApp
       // remote.SetCommand(lightOn);
       // remote.ButtonWasPressed();
 
-      var remoteControl = new RemoteControl();
+      // var remoteControl = new RemoteControl();
 
-      var livingRoomLight = new Light("Living Room");
-      var kitchenLight = new Light("Kitchen");
+      // var livingRoomLight = new Light("Living Room");
+      // var kitchenLight = new Light("Kitchen");
       
-      var stereo = new Stereo("Living Room");
+      // var stereo = new Stereo("Living Room");
 
-      ICommand livingRoomLightOn = new LightOnCommand(livingRoomLight);
-      ICommand livingRoomLightOff = new LightOffCommand(livingRoomLight);
+      // ICommand livingRoomLightOn = new LightOnCommand(livingRoomLight);
+      // ICommand livingRoomLightOff = new LightOffCommand(livingRoomLight);
 
-      ICommand kitchenLightOn = new LightOnCommand(kitchenLight);
-      ICommand kitchenLightOff = new LightOffCommand(kitchenLight);
+      // ICommand kitchenLightOn = new LightOnCommand(kitchenLight);
+      // ICommand kitchenLightOff = new LightOffCommand(kitchenLight);
 
-      remoteControl.SetCommand(0, livingRoomLightOn, livingRoomLightOff);
-      remoteControl.SetCommand(1, kitchenLightOn, kitchenLightOff);
+      // remoteControl.SetCommand(0, livingRoomLightOn, livingRoomLightOff);
+      // remoteControl.SetCommand(1, kitchenLightOn, kitchenLightOff);
 
-      System.Console.WriteLine(remoteControl);
+      // System.Console.WriteLine(remoteControl);
 
-      remoteControl.OnButtonWasPushed(0);
-      remoteControl.OffButtonWasPushed(0);
+      // remoteControl.OnButtonWasPushed(0);
+      // remoteControl.OffButtonWasPushed(0);
 
-      remoteControl.OnButtonWasPushed(1);
-      remoteControl.OffButtonWasPushed(1);
+      // remoteControl.OnButtonWasPushed(1);
+      // remoteControl.OffButtonWasPushed(1);
+      #endregion
+
+      #region Adapter and Facade
+      MallardDuck duck = new MallardDuck();
+      
+      WildTurkey turkey = new WildTurkey();
+      Duck turkeyAdapter = new TurkeyAdapter(turkey);
+
+      System.Console.WriteLine("The Turkey says...");
+      turkey.Gobble();
+      turkey.Fly();
       #endregion
     }
   }
