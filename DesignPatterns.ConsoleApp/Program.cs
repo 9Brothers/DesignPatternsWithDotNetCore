@@ -1,4 +1,5 @@
 ﻿using System;
+using DesignPatterns.Shared.Patterns.Command;
 using DesignPatterns.Shared.Patterns.Decorator;
 using DesignPatterns.Shared.Patterns.Factory;
 using DesignPatterns.Shared.Patterns.Observ;
@@ -60,6 +61,41 @@ namespace DesignPatterns.ConsoleApp
       // var singleInstance = Singleton.GetInstance();
 
       // var testNewInstance = Singleton.GetInstance();
+      #endregion
+
+      #region Command
+      // var remote = new SimpleRemoteControl();
+
+      // var light = new Light();
+
+      // ICommand lightOn = new LightOnCommand(light);
+
+      // remote.SetCommand(lightOn);
+      // remote.ButtonWasPressed();
+
+      var remoteControl = new RemoteControl();
+
+      var livingRoomLight = new Light("Living Room");
+      var kitchenLight = new Light("Kitchen");
+      
+      var stereo = new Stereo("Living Room");
+
+      ICommand livingRoomLightOn = new LightOnCommand(livingRoomLight);
+      ICommand livingRoomLightOff = new LightOffCommand(livingRoomLight);
+
+      ICommand kitchenLightOn = new LightOnCommand(kitchenLight);
+      ICommand kitchenLightOff = new LightOffCommand(kitchenLight);
+
+      remoteControl.SetCommand(0, livingRoomLightOn, livingRoomLightOff);
+      remoteControl.SetCommand(1, kitchenLightOn, kitchenLightOff);
+
+      System.Console.WriteLine(remoteControl);
+
+      remoteControl.OnButtonWasPushed(0);
+      remoteControl.OffButtonWasPushed(0);
+
+      remoteControl.OnButtonWasPushed(1);
+      remoteControl.OffButtonWasPushed(1);
       #endregion
     }
   }
