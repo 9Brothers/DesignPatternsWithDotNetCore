@@ -6,6 +6,7 @@ using DesignPatterns.Shared.Patterns.Factory;
 using DesignPatterns.Shared.Patterns.Observ;
 using DesignPatterns.Shared.Patterns.SingletonPattern;
 using DesignPatterns.Shared.Patterns.Strategy;
+using DesignPatterns.Shared.Patterns.TemplateMethod;
 
 namespace DesignPatterns.ConsoleApp
 {
@@ -100,14 +101,28 @@ namespace DesignPatterns.ConsoleApp
       #endregion
 
       #region Adapter and Facade
-      MallardDuck duck = new MallardDuck();
+      // MallardDuck duck = new MallardDuck();
       
-      WildTurkey turkey = new WildTurkey();
-      Duck turkeyAdapter = new TurkeyAdapter(turkey);
+      // WildTurkey turkey = new WildTurkey();
+      // Duck turkeyAdapter = new TurkeyAdapter(turkey);
 
-      System.Console.WriteLine("The Turkey says...");
-      turkey.Gobble();
-      turkey.Fly();
+      // System.Console.WriteLine("The Turkey says...");
+      // turkey.Gobble();
+      // turkey.Fly();
+      #endregion
+
+      #region TemplateMethod
+      // CaffeineBeverage tea = new Tea();
+      // tea.PrepareRecipe();
+
+      // CaffeineBeverage coffe = new Coffe();
+      // coffe.PrepareRecipe();
+
+      CaffeineBeverageWithHook coffeeWithHook = new CoffeWithHook();
+      coffeeWithHook.PrepareRecipe();
+
+      CaffeineBeverageWithHook teaWithHook = new TeaWithHook();
+      teaWithHook.PrepareRecipe();
       #endregion
     }
   }
